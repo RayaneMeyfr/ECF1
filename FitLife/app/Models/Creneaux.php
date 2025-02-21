@@ -19,4 +19,8 @@ class Creneaux extends Model
     public function cour(){
         return $this->belongsTo(Cour::class);
     }
+
+    public function user(){
+        return $this->belongsToMany(User::class); 
+    }
 }

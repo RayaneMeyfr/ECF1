@@ -16,7 +16,15 @@ return new class extends Migration
             $table->integer('nb_place');
             $table->date('date_creneaux');
             $table->time('hour_creneaux');
-            $table->foreignIdFor(\App\Models\Cour::class);
+            $table->foreignIdFor(\App\Models\Cour::class)->constrained()->cascadeOnDelete();
+            $table->timestamps();
+        });
+
+        Schema::create('creneaux_user', function (Blueprint $table) {
+            $table->id();
+            $table->date('creneaux_user_date'); 
+            $table->foreignIdFor(\App\Models\Creneaux::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -25,7 +33,9 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {   
+        Schema::dropIfExists('creneaux_user');
         Schema::dropIfExists('creneauxes');
+       
     }
 };

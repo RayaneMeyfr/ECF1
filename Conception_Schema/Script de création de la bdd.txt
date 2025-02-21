@@ -1,0 +1,40 @@
+CREATE DATABASE IF NOT EXISTS fitlife;
+USE fitlife;
+
+CREATE TABLE Users(
+   id INT,
+   name VARCHAR(50),
+   email INT,
+   email_verified_at DATETIME,
+   password VARCHAR(50),
+   role LOGICAL,
+   PRIMARY KEY(id)
+);
+
+CREATE TABLE Creneaux(
+   id VARCHAR(50),
+   nb_place INT,
+   date_creneaux DATE,
+   hour_creneaux TIME,
+   PRIMARY KEY(id)
+);
+
+CREATE TABLE Cours(
+   id INT,
+   name VARCHAR(50),
+   id_1 VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id),
+   FOREIGN KEY(id_1) REFERENCES Creneaux(id)
+);
+
+CREATE TABLE reserver(
+   id INT,
+   id_1 VARCHAR(50),
+   reservation_date VARCHAR(50),
+   PRIMARY KEY(id, id_1),
+   FOREIGN KEY(id) REFERENCES Users(id),
+   FOREIGN KEY(id_1) REFERENCES Creneaux(id)
+);
+
+
+

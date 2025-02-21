@@ -1,0 +1,4 @@
+Users = (id INT, name VARCHAR(50), email INT, email_verified_at DATETIME, password VARCHAR(50), role Boolean);
+Creneaux = (id VARCHAR(50), nb_place INT, date_creneaux DATE, hour_creneaux TIME);
+Cours = (id INT, name VARCHAR(50), #id_1);
+reserver = (#id, #id_1, reservation_date VARCHAR(50));

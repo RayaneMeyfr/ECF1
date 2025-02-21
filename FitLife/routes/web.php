@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Creneaux;
 
 Route::get('/', function () {
-    return view('accueil');
+    $creneauxes = Creneaux::with('cour')->latest()->paginate(7);
+    return view('accueil',['creneauxes'=>$creneauxes]);
 });
 
 Route::get('/dashboard', function () {

@@ -9,4 +9,14 @@ class Cour extends Model
 {
     /** @use HasFactory<\Database\Factories\CourFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "name",
+    ];
+
+
+    public function creneauxes(){
+        return $this->hasMany(Creneaux::class);
+    }
+
 }

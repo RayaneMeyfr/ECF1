@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CourFactory extends Factory
 {
+    
     /**
      * Define the model's default state.
      *
@@ -17,7 +18,10 @@ class CourFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->randomElement([
+                'Football', 'Basketball', 'Tennis', 'Natation', 'Cyclisme',
+                'Musculation', 'Yoga', 'Boxe', 'Athlétisme', 'Volley-ball'
+            ]),
         ];
     }
 }

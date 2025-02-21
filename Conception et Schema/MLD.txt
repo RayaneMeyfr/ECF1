@@ -1,0 +1,31 @@
+Reservation = (
+   id INT PRIMARY KEY,
+   reservation_date DATE
+);
+
+Creneaux = (
+   id VARCHAR(50) PRIMARY KEY,
+   nb_place INT,
+   date_creneaux DATE,
+   hour_creneaux TIME,
+   reservation_id INT NOT NULL,
+   FOREIGN KEY (reservation_id) REFERENCES Reservation(id)
+);
+
+Cours = (
+   id INT PRIMARY KEY,
+   name VARCHAR(50),
+   creneaux_id VARCHAR(50) UNIQUE NOT NULL,
+   FOREIGN KEY (creneaux_id) REFERENCES Creneaux(id)
+);
+
+Users = (
+   id INT PRIMARY KEY,
+   name VARCHAR(50),
+   email VARCHAR(50) UNIQUE NOT NULL, 
+   email_verified_at DATETIME,
+   password VARCHAR(50),
+   role BOOLEAN NOT NULL, 
+   reservation_id INT NOT NULL,
+   FOREIGN KEY (reservation_id) REFERENCES Reservation(id)
+);
